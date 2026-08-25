@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPI Dashboard - Amir Bagheri</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f3f6fa;
+            color: #1f2937;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            height: 80px;
+            background: #075985;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .system-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .header-left {
+            text-align: left;
+        }
+
+        .header-left h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .header-left span {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            padding: 25px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .page-title h1 {
+            font-size: 25px;
+            color: #0f172a;
+        }
+
+        .page-title span {
+            color: #075985;
+        }
+
+
+        /* =========================
+           USER INFO
+        ========================= */
+
+        .user-box {
+            background: white;
+            padding: 18px 22px;
+
+            border-radius: 12px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .user-info {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .user-info strong {
+            color: #075985;
+        }
+
+
+        /* =========================
+           KPI CARDS
+        ========================= */
+
+        .kpi-cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .kpi-card {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 12px rgba(0,0,0,0.07);
+
+            border-top: 4px solid #0ea5e9;
+        }
+
+        .kpi-card h4 {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .kpi-value {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #0f172a;
+        }
+
+        .kpi-card small {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color: #94a3b8;
+        }
+
+
+        /* SCORE */
+
+        .score-card {
+            border-top-color: #f59e0b;
+        }
+
+        .score-card .kpi-value {
+            color: #f59e0b;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-container {
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.07);
+
+            margin-bottom: 25px;
+
+            overflow-x: auto;
+        }
+
+        .table-title {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .table-title h2 {
+
+            font-size: 19px;
+
+            color: #334155;
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 1100px;
+        }
+
+        th {
+
+            background: #075985;
+
+            color: white;
+
+            padding: 12px 8px;
+
+            font-size: 13px;
+        }
+
+        td {
+
+            border: 1px solid #e2e8f0;
+
+            text-align: center;
+
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+
+            background: #f8fafc;
+        }
+
+        .month {
+
+            font-weight: bold;
+
+            color: #075985;
+
+            width: 100px;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-number {
+
+            width: 90px;
+
+            padding: 8px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 6px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        .input-number:focus {
+
+            border-color: #0ea5e9;
+
+            box-shadow:
+                0 0 0 3px rgba(14,165,233,0.15);
+        }
+
+
+        /* calculated cells */
+
+        .calculated {
+
+            font-weight: bold;
+
+            color: #0369a1;
+        }
+
+        .score-cell {
+
+            font-weight: bold;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           CHARTS
+        ========================= */
+
+        .charts {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .chart-box {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.07);
+
+            height: 400px;
+        }
+
+        .chart-box h2 {
+
+            font-size: 18px;
+
+            margin-bottom: 15px;
+
+            color: #334155;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        button {
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 11px 22px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .save-btn {
+
+            background: #16a34a;
+
+            color: white;
+        }
+
+        .save-btn:hover {
+
+            background: #15803d;
+        }
+
+        .reset-btn {
+
+            background: #dc2626;
+
+            color: white;
+        }
+
+        .reset-btn:hover {
+
+            background: #b91c1c;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 1100px) {
+
+            .kpi-cards {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+             .charts {
+        grid-template-columns: minmax(0, 1fr);
+    }
+        }
+
+        @media(max-width: 700px) {
+
+            header {
+
+                padding: 0 15px;
+            }
+
+            .system-title {
+
+                font-size: 17px;
+            }
+
+            .header-left {
+
+                display: none;
+            }
+
+            main {
+
+                padding: 12px;
+            }
+
+            .kpi-cards {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .user-info {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-right">
+
+        <!-- اگر لوگو داری مسیرش را تغییر بده -->
+        <img
+            src="../../icons/logo-removebg-preview.png"
+            class="logo"
+            alt="Tanin Mess"
+        >
+
+        <div class="system-title">
+            KPI System
+        </div>
+
+    </div>
+
+
+    <div class="header-left">
+
+        <h3>
+            داشبورد عملکرد فردی
+        </h3>
+
+        <span>
+            Tanin Mes Sepidan
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+    <!-- TITLE -->
+
+    <div class="page-title">
+
+        <h1>
+            داشبورد عملکرد فردی -
+            <span id="expertName">
+               عالیه کرمانشاهیان
+            </span>
+        </h1>
+
+        <div>
+            سال ۱۴۰۵
+        </div>
+
+    </div>
+
+
+
+    <!-- USER INFORMATION -->
+
+    <div class="user-box">
+
+        <div class="user-info">
+
+            <div>
+                کارشناس:
+                <strong id="expertName2">
+                   عالیه کرمانشاهیان
+                </strong>
+            </div>
+
+            <div>
+                واحد:
+                <strong>
+                    بازرگانی
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div>
+
+            آخرین بروزرسانی:
+            <strong id="lastUpdate">
+                -
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         KPI CARDS
+    ========================= -->
+
+    <div class="kpi-cards">
+
+
+        <!-- RFQ -->
+
+        <div class="kpi-card">
+
+            <h4>
+                کل استعلام (RFQ)
+            </h4>
+
+            <div
+                class="kpi-value"
+                id="totalRFQ">
+                0
+            </div>
+
+            <small>
+                مجموع ۱۲ ماه
+            </small>
+
+        </div>
+
+
+        <!-- ANSWERED -->
+
+        <div class="kpi-card">
+
+            <h4>
+                پاسخ داده شده
+            </h4>
+
+            <div
+                class="kpi-value"
+                id="totalAnswered">
+                0
+            </div>
+
+            <small>
+                مجموع ۱۲ ماه
+            </small>
+
+        </div>
+
+
+        <!-- PO -->
+
+        <div class="kpi-card">
+
+            <h4>
+                سفارش خرید (PO)
+            </h4>
+
+            <div
+                class="kpi-value"
+                id="totalPO">
+                0
+            </div>
+
+            <small>
+                مجموع ۱۲ ماه
+            </small>
+
+        </div>
+
+
+        <!-- RESPONSE -->
+
+        <div class="kpi-card">
+
+            <h4>
+                درصد پاسخگویی
+            </h4>
+
+            <div
+                class="kpi-value"
+                id="totalResponse">
+                0%
+            </div>
+
+            <small>
+                کل عملکرد
+            </small>
+
+        </div>
+
+
+        <!-- SCORE -->
+
+        <div class="kpi-card score-card">
+
+            <h4>
+                امتیاز عملکرد
+            </h4>
+
+            <div
+                class="kpi-value"
+                id="totalScore">
+                0
+            </div>
+
+            <small>
+                از ۱۰۰
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         BUTTONS
+    ========================= -->
+
+    <div class="buttons">
+
+        <button
+            class="save-btn"
+            onclick="saveData()">
+
+            💾 ذخیره اطلاعات
+
+        </button>
+
+
+        <button
+            class="reset-btn"
+            onclick="resetData()">
+
+            🗑 پاک کردن اطلاعات
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         TABLE
+    ========================= -->
+
+    <div class="table-container">
+
+
+        <div class="table-title">
+
+            <h2>
+                عملکرد ۱۲ ماهه
+            </h2>
+
+            <span>
+                مقادیر آبی قابل ویرایش هستند
+            </span>
+
+        </div>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ماه
+                    </th>
+
+                    <th>
+                        استعلام (RFQ)
+                    </th>
+
+                    <th>
+                        پاسخ داده شده
+                    </th>
+
+                    <th>
+                        سفارش خرید (PO)
+                    </th>
+
+                    <th>
+                        انصرافی
+                    </th>
+
+                    <th>
+                        درصد پاسخگویی
+                    </th>
+
+                    <th>
+                        مبلغ سفارش خرید
+                    </th>
+
+                    <th>
+                        درصد سفارش خرید
+                    </th>
+
+                    <th>
+                        امتیاز
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="kpiTable">
+
+                <!-- JavaScript -->
+
+            </tbody>
+
+
+            <tfoot>
+
+                <tr>
+
+                    <th>
+                        جمع کل
+                    </th>
+
+                    <th id="sumRFQ">
+                        0
+                    </th>
+
+                    <th id="sumAnswered">
+                        0
+                    </th>
+
+                    <th id="sumPO">
+                        0
+                    </th>
+
+                    <th id="sumCancelled">
+                        0
+                    </th>
+
+                    <th id="sumResponse">
+                        0%
+                    </th>
+
+                    <th id="sumAmount">
+                        0
+                    </th>
+
+                    <th id="sumPurchaseRate">
+                        0%
+                    </th>
+
+                    <th id="sumScore">
+                        0
+                    </th>
+
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- =========================
+         CHARTS
+    ========================= -->
+
+    <div class="charts">
+
+
+        <!-- SCORE CHART -->
+
+        <div class="chart-box">
+
+            <h2>
+                📈 نمودار روند امتیاز عملکرد
+            </h2>
+
+            <canvas id="scoreChart"></canvas>
+
+        </div>
+
+
+        <!-- PERFORMANCE CHART -->
+
+        <div class="chart-box">
+
+            <h2>
+                📊 نمودار عملکرد ماهانه
+            </h2>
+
+            <canvas id="performanceChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    KPI System — Tanin Mes Sepidan
+
+</footer>
+
+
+
+<script src="master.amir.js">
+
+</script>
+
+
+</body>
+</html>
