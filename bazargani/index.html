@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPI بازرگانی | Tanin Mes</title>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../output.css">
+
+</head>
+
+
+<body class="min-h-screen bg-slate-50 text-[#172033]">
+
+
+    <!-- ========================================================= -->
+    <!-- HEADER -->
+    <!-- ========================================================= -->
+
+    <header class="w-full h-[10vh] min-h-[75px]
+               bg-[#075985]
+               flex items-center justify-between
+               shadow-md">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="w-1/2 h-full flex items-center">
+
+
+            <!-- KPI SYSTEM -->
+
+            <div class="h-full w-[40%]
+                       flex items-center justify-center
+                       border-l border-white/30">
+
+
+                <div class="w-1/3 flex justify-center">
+
+                    <img class="w-14 h-14 object-contain" src="../icons/chart_white-removebg-preview.png" alt="KPI">
+
+                </div>
+
+
+                <h1 class="text-white text-2xl font-semibold">
+
+                    KPI System
+
+                </h1>
+
+
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="flex-1 flex items-center px-6">
+
+                <span class="text-white text-sm">
+
+                    Tanin Mes Sepidan
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="w-1/2 h-full
+                   flex items-center justify-end
+                   gap-8 px-8">
+
+
+            <!-- DATE -->
+
+            <span id="date" class="text-white text-sm">
+
+            </span>
+
+
+            <!-- LOGO -->
+
+            <img class="h-[70%] object-contain" src="../icons/logo_white-removebg-preview.png" alt="Tanin Mes">
+
+
+
+            <a href="../index.html" id="backBtn" class="px-4 py-2 rounded-lg text-white
+                   bg-white/10
+                   hover:bg-white/20
+                   transition">
+
+                ← بازگشت
+
+            </a>
+        </div>
+
+
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- MAIN -->
+    <!-- ========================================================= -->
+
+    <main class="relative min-h-[90vh]
+               px-8 py-12
+               overflow-hidden">
+
+
+        <!-- ===================================================== -->
+        <!-- TITLE -->
+        <!-- ===================================================== -->
+
+        <div class="text-center mb-12">
+
+            <h2 class="text-4xl font-bold text-[#172033]">
+
+
+                <span class="text-[#F4B740]">
+
+                    KPI
+
+                </span>
+
+                بازرگانی
+
+
+            </h2>
+
+
+            <p class="mt-4 text-slate-500 text-lg">
+
+                لطفاً بخش مورد نظر خود را انتخاب کنید
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- MAIN CARDS -->
+        <!-- ===================================================== -->
+
+        <section id="cards" class="max-w-5xl mx-auto
+                   grid
+                   grid-cols-1
+                   md:grid-cols-2
+
+                   gap-8
+
+                   opacity-100
+                   translate-x-0
+
+                   transition-all
+                   duration-500
+                   ease-in-out">
+
+
+            <!-- ================================================= -->
+            <!-- MANAGEMENT CARD -->
+            <!-- ================================================= -->
+
+            <a href="management/index.html" class="group relative overflow-hidden
+
+                       bg-white
+
+                       rounded-3xl
+
+                       border border-slate-200
+
+                       shadow-sm
+
+                       hover:shadow-2xl
+                       hover:-translate-y-2
+
+                       transition-all
+                       duration-300">
+
+
+                <!-- TOP COLOR -->
+
+                <div class="h-3 bg-[#F4B740]">
+                </div>
+
+
+
+                <div class="p-10 text-center">
+
+
+                    <!-- ICON -->
+
+                    <div class="mx-auto
+                               w-28 h-28
+                               rounded-full
+                               bg-[#FFF7DF]
+                               flex
+                               items-center
+                               justify-center
+                               border-8
+                               border-white
+                               shadow-lg
+                               group-hover:scale-105
+                               transition-transform
+                               duration-300">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 -960 960 960"
+                            fill="#F4B740">
+                            <path
+                                d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-80q0-33 17-62t47-44q56-27 116-40t140-13q80 0 140 13t116 40q30 15 47 44t17 62v80H160Z" />
+                        </svg>
+
+
+                    </div>
+                    <!-- TITLE -->
+
+                    <h3 class="mt-8
+                               text-3xl
+                               font-bold">
+
+                        مدیریت بازرگانی
+
+                    </h3>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="mt-4
+                               text-slate-500
+                               leading-8">
+
+                        مشاهده و مدیریت عملکرد کلی واحد بازرگانی،
+                        بررسی KPI کارشناسان و گزارش‌های مدیریتی
+
+                    </p>
+
+
+
+                    <!-- ARROW -->
+
+                    <div class="mt-8">
+
+
+                        <div class="inline-flex
+                                   items-center
+                                   justify-center
+
+                                   w-14 h-14
+
+                                   rounded-full
+
+                                   bg-[#172033]
+
+                                   text-white
+
+                                   group-hover:bg-[#F4B740]
+
+                                   transition-all
+                                   duration-300">
+
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 -960 960 960"
+                                fill="currentColor">
+
+
+                                <path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z" />
+
+
+                            </svg>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </a>
+
+
+
+            <!-- ================================================= -->
+            <!-- EXPERTS CARD -->
+            <!-- ================================================= -->
+
+            <button id="KARSHENASAN" type="button" class="group relative overflow-hidden
+
+                       bg-white
+
+                       rounded-3xl
+
+                       border border-slate-200
+
+                       shadow-sm
+
+                       hover:shadow-2xl
+                       hover:-translate-y-2
+
+                       transition-all
+                       duration-300
+
+                       text-right">
+
+
+                <!-- TOP COLOR -->
+
+                <div class="h-3 bg-[#3B82F6]">
+                </div>
+
+
+
+                <div class="p-10 text-center">
+
+
+                    <!-- ICON -->
+
+                    <div class="mx-auto
+
+                               w-28 h-28
+
+                               rounded-full
+
+                               bg-[#EFF6FF]
+
+                               flex
+                               items-center
+                               justify-center
+
+                               border-8
+                               border-white
+
+                               shadow-lg
+
+                               group-hover:scale-105
+
+                               transition-transform
+                               duration-300">
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 -960 960 960"
+                            fill="#3B82F6">
+
+
+                            <path
+                                d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-80q0-33 17-62t47-44q56-27 116-40t140-13q80 0 140 13t116 40q30 15 47 44t17 62v80H160Z" />
+
+
+                        </svg>
+
+
+                    </div>
+
+
+
+                    <!-- TITLE -->
+
+                    <h3 class="mt-8
+                               text-3xl
+                               font-bold">
+
+                        کارشناسان بازرگانی
+
+                    </h3>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="mt-4
+                               text-slate-500
+                               leading-8">
+
+                        مشاهده عملکرد کارشناسان بازرگانی،
+                        بررسی KPI فردی و گزارش پیشرفت عملکرد
+
+                    </p>
+
+
+
+                    <!-- ARROW -->
+
+                    <div class="mt-8">
+
+
+                        <div class="inline-flex
+                                   items-center
+                                   justify-center
+                                   w-14 h-14
+                                   rounded-full
+                                   bg-[#172033]
+                                   text-white
+                                   group-hover:bg-[#3B82F6]
+                                   transition-all
+                                   duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 -960 960 960"
+                                fill="currentColor">
+                                <path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z" />
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- USERS -->
+        <!-- ===================================================== -->
+
+        <section id="users" class="hidden
+
+                   max-w-5xl
+                   mx-auto
+                   opacity-0
+                   translate-x-10
+                   transition-all
+                   duration-500
+                   ease-in-out">
+            <!-- USERS HEADER -->
+
+            <div class="flex
+                       items-center
+                       justify-between
+
+                       mb-10">
+
+
+                <div>
+
+
+                    <h2 class="text-3xl
+                               font-bold">
+
+                        کارشناسان بازرگانی
+
+                    </h2>
+
+
+                    <p class="mt-2
+                               text-slate-500">
+
+                        کارشناس مورد نظر را انتخاب کنید
+
+                    </p>
+
+
+                </div>
+
+                <!-- BACK -->
+
+                <button id="back" type="button" class="flex
+                           items-center
+                           gap-2
+                           px-5 py-3
+                           rounded-xl
+                           bg-[#172033]
+                           text-white
+                           hover:bg-[#075985]
+                           transition-colors">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 -960 960 960"
+                        fill="currentColor">
+
+                        <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+
+                    </svg>
+
+                    بازگشت
+
+                </button>
+
+            </div>
+
+            <!-- ================================================= -->
+            <!-- USER CARDS -->
+            <!-- ================================================= -->
+
+            <div class="grid
+
+                       grid-cols-1
+                       sm:grid-cols-2
+                       lg:grid-cols-3
+                       gap-6">
+
+                <!-- ================================================= -->
+                <!-- AMIR RASHIDI -->
+                <!-- ================================================= -->
+
+                <button class="user-card
+
+                           bg-white
+                           p-7
+                           rounded-2xl
+                           border
+                           border-slate-200
+                           shadow-sm
+                           hover:shadow-xl
+                           hover:-translate-y-1
+                           transition-all
+                           duration-300
+                           text-right" data-user="Amir Rashidi">
+
+
+                    <div class="flex
+                               items-center
+                               gap-4">
+
+
+                        <div class="w-14
+                                   h-14
+                                   rounded-full
+                                   bg-blue-100
+                                   text-blue-600
+                                   flex
+                                   items-center
+                                   justify-center
+                                   font-bold
+                                   text-xl">
+
+                            AR
+
+                        </div>
+
+
+                        <div>
+
+
+                            <h3 class="font-bold
+                                       text-lg">
+
+                                Amir Rashidi
+
+                            </h3>
+
+
+                            <p class="text-sm
+                                       text-slate-500">
+
+                                کارشناس بازرگانی
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </button>
+                <!-- ================================================= -->
+                <!-- ALIYE -->
+                <!-- ================================================= -->
+
+                <button class="user-card
+
+                           bg-white
+
+                           p-7
+
+                           rounded-2xl
+
+                           border
+                           border-slate-200
+
+                           shadow-sm
+
+                           hover:shadow-xl
+                           hover:-translate-y-1
+
+                           transition-all
+                           duration-300
+
+                           text-right" data-user="Aliye Kermanshahian">
+
+
+                    <div class="flex
+                               items-center
+                               gap-4">
+
+
+                        <div class="w-14
+                                   h-14
+
+                                   rounded-full
+
+                                   bg-green-100
+
+                                   text-green-600
+
+                                   flex
+                                   items-center
+                                   justify-center
+
+                                   font-bold
+                                   text-xl">
+
+                            AK
+
+                        </div>
+
+
+                        <div>
+
+
+                            <h3 class="font-bold
+                                       text-lg">
+
+                                Aliye Kermanshahian
+
+                            </h3>
+
+
+                            <p class="text-sm
+                                       text-slate-500">
+
+                                کارشناس بازرگانی
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </button>
+
+
+
+                <!-- ================================================= -->
+                <!-- AMIR BAGHERI -->
+                <!-- ================================================= -->
+
+                <button class="user-card
+
+                           bg-white
+                           p-7
+                           rounded-2xl
+                           border
+                           border-slate-200
+                           shadow-sm
+                           hover:shadow-xl
+                           hover:-translate-y-1
+
+                           transition-all
+                           duration-300
+
+                           text-right" data-user="Amir Bagheri">
+
+
+                    <div class="flex
+                               items-center
+                               gap-4">
+
+
+                        <div class="w-14
+                                   h-14
+
+                                   rounded-full
+
+                                   bg-amber-100
+
+                                   text-amber-600
+
+                                   flex
+                                   items-center
+                                   justify-center
+
+                                   font-bold
+                                   text-xl">
+
+                            AB
+
+                        </div>
+
+
+                        <div>
+
+
+                            <h3 class="font-bold
+                                       text-lg">
+
+                                Amir Bagheri
+
+                            </h3>
+
+
+                            <p class="text-sm
+                                       text-slate-500">
+
+                                کارشناس بازرگانی
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </button>
+
+
+
+                <!-- ================================================= -->
+                <!-- AFSANEH -->
+                <!-- ================================================= -->
+
+                <button class="user-card
+
+                           bg-white
+
+                           p-7
+
+                           rounded-2xl
+
+                           border
+                           border-slate-200
+
+                           shadow-sm
+
+                           hover:shadow-xl
+                           hover:-translate-y-1
+
+                           transition-all
+                           duration-300
+
+                           text-right" data-user="Afsaneh Bagheri">
+
+
+                    <div class="flex
+                               items-center
+                               gap-4">
+
+
+                        <div class="w-14
+                                   h-14
+                                   rounded-full
+                                   bg-purple-100
+                                   text-purple-600
+                                   flex
+                                   items-center
+                                   justify-center
+                                   font-bold
+                                   text-xl">
+
+                            AB
+
+                        </div>
+
+
+                        <div>
+
+
+                            <h3 class="font-bold
+                                       text-lg">
+
+                                Afsaneh Bagheri
+
+                            </h3>
+
+                            <p class="text-sm
+                                       text-slate-500">
+
+                                کارشناس بازرگانی
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </button>
+
+                <!-- ================================================= -->
+                <!-- USER 5 -->
+                <!-- ================================================= -->
+
+                <button class="user-card
+
+                           bg-white
+
+                           p-7
+
+                           rounded-2xl
+
+                           border
+                           border-slate-200
+
+                           shadow-sm
+
+                           hover:shadow-xl
+                           hover:-translate-y-1
+
+                           transition-all
+                           duration-300
+
+                           text-right" data-user="Expert 5">
+
+
+                    <div class="flex
+                               items-center
+                               gap-4">
+
+
+                        <div class="w-14
+                                   h-14
+
+                                   rounded-full
+
+                                   bg-cyan-100
+
+                                   text-cyan-600
+
+                                   flex
+                                   items-center
+                                   justify-center
+
+                                   font-bold
+                                   text-xl">
+
+                            E5
+
+                        </div>
+
+
+                        <div>
+
+
+                            <h3 class="font-bold
+                                       text-lg">
+
+                                کارشناس پنجم
+
+                            </h3>
+
+
+                            <p class="text-sm
+                                       text-slate-500">
+
+                                کارشناس بازرگانی
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================================= -->
+    <!-- PASSWORD MODAL -->
+    <!-- ========================================================= -->
+
+    <div id="passwordModal" class="fixed
+               inset-0
+               z-50
+
+               hidden
+
+               items-center
+               justify-center
+
+               bg-black/40
+               backdrop-blur-sm
+
+               opacity-0
+
+               transition-opacity
+               duration-300">
+
+
+        <div id="passwordBox" class="w-[90%]
+                   max-w-md
+
+                   bg-white
+
+                   rounded-3xl
+
+                   shadow-2xl
+
+                   p-8
+
+                   scale-95
+
+                   transition-transform
+                   duration-300">
+
+
+            <!-- ICON -->
+
+            <div class="mx-auto
+                       w-16
+                       h-16
+
+                       rounded-full
+
+                       bg-blue-100
+
+                       flex
+                       items-center
+                       justify-center
+
+                       text-blue-600
+                       text-2xl">
+
+                🔐
+
+            </div>
+
+
+
+            <!-- TITLE -->
+
+            <div class="text-center">
+
+
+                <h2 class="mt-5
+                           text-2xl
+                           font-bold">
+
+                    ورود به داشبورد
+
+                </h2>
+
+
+                <p id="selectedUser" class="mt-2
+                           text-slate-500">
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- INPUT -->
+
+            <div class="mt-7">
+
+
+                <label class="block
+                           mb-2
+
+                           text-sm
+                           font-semibold">
+
+                    رمز عبور
+
+                </label>
+
+
+                <input id="passwordInput" type="password" inputmode="numeric" placeholder="رمز عبور را وارد کنید" class="w-full
+
+                           px-4
+                           py-4
+
+                           rounded-xl
+
+                           border
+                           border-slate-200
+
+                           outline-none
+
+                           focus:border-blue-500
+
+                           focus:ring-2
+                           focus:ring-blue-100
+
+                           transition">
+
+
+                <!-- ERROR -->
+
+                <p id="passwordError" class="hidden
+
+                           mt-3
+
+                           text-sm
+
+                           text-red-500">
+
+                    رمز عبور اشتباه است.
+                </p>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="flex
+                       gap-3
+                       mt-7">
+
+                <!-- LOGIN -->
+
+                <button id="loginButton" type="button" class="flex-1
+                           py-3
+                           rounded-xl
+                           bg-[#075985]
+                           text-white
+                           font-semibold
+                           hover:bg-[#0c4a6e]
+                             transition">
+
+                    ورود
+
+                </button>
+
+                <!-- CANCEL -->
+
+                <button id="cancelButton" type="button" class="px-6
+                           py-3
+                           rounded-xl
+                           bg-slate-100
+
+                           text-slate-600
+
+                           hover:bg-slate-200
+
+                           transition">
+                    لغو
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================================= -->
+
+    <script src="master.js">
+
+
+    </script>
+
+
+</body>
+
+</html>
