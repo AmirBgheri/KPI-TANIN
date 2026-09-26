@@ -46,7 +46,7 @@ const salesSections = {
                 role: "کارشناس فروش روغن",
                 initials: "O1",
                 password: "OIL 1",
-                page: "oil/karshenas OIL 1/index.html"
+                page: "OIL/karshenas OIL 1/index.html"
             },
             {
                 id: "oil-2",
@@ -54,7 +54,7 @@ const salesSections = {
                 role: "کارشناس فروش روغن",
                 initials: "O2",
                 password: "OIL 2",
-                 page: "oil/karshenas OIL 2/index.html"
+                 page: "OIL/karshenas OIL 2/index.html"
             },
             
          
