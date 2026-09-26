@@ -129,18 +129,17 @@ months.forEach((month, index) => {
         </td>
 
 
-        <!-- مبلغ سفارش -->
-
+      
+        <!-- مبلغ سفارش خرید -->
         <td>
-
             <input
-                type="number"
-                min="0"
+                type="text"
+                inputmode="numeric"
                 class="input-number amount"
                 data-month="${index}"
                 value="0"
+                autocomplete="off"
             >
-
         </td>
 
 
@@ -241,9 +240,7 @@ function getMonthData(index) {
 
 
     const amount =
-        Number(
-            amountInput.value
-        ) || 0;
+    parseAmount(amountInput.value);
 
 
 
@@ -1345,30 +1342,40 @@ function updateCharts(scores) {
    10. وقتی Input تغییر کرد
 ========================================================= */
 
+/* =========================================================
+   INPUT CHANGE EVENT
+   فرمت مبلغ سفارش + محاسبه مجدد KPI
+========================================================= */
+
 document.addEventListener(
-
     "input",
-
     function (event) {
 
+        const input = event.target;
 
+
+        // اگر Input مربوط به مبلغ سفارش خرید بود
         if (
-
-            event.target
-                .classList
-                .contains(
-                    "input-number"
-                )
-
+            input.classList.contains("amount")
         ) {
 
+            input.value = formatAmount(
+                input.value
+            );
+
+        }
+
+
+        // بروزرسانی داشبورد برای تمام Inputها
+        if (
+            input.classList.contains("input-number")
+        ) {
 
             updateDashboard();
 
         }
 
     }
-
 );
 
 
@@ -2300,3 +2307,50 @@ async function init() {
 
 
 init();
+
+/* =========================================================
+   FORMAT PURCHASE ORDER AMOUNT
+   جدا کردن سه‌رقم‌سه‌رقم مبلغ سفارش خرید
+========================================================= */
+
+
+// تبدیل اعداد فارسی و عربی به انگلیسی
+function normalizeAmountDigits(value) {
+
+    return String(value)
+
+        .replace(/[۰-۹]/g, digit =>
+            "۰۱۲۳۴۵۶۷۸۹".indexOf(digit)
+        )
+
+        .replace(/[٠-٩]/g, digit =>
+            "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+        );
+
+}
+
+
+// نمایش مبلغ با جداکننده هزارگان
+function formatAmount(value) {
+
+    const digits = normalizeAmountDigits(value)
+        .replace(/\D/g, "");
+
+
+    return digits.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ","
+    );
+
+}
+
+
+// تبدیل مبلغ فرمت‌شده به عدد واقعی
+function parseAmount(value) {
+
+    const digits = normalizeAmountDigits(value)
+        .replace(/\D/g, "");
+
+    return Number(digits) || 0;
+
+}

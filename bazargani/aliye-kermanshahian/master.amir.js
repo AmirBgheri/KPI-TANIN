@@ -30,12 +30,6 @@ const months = [
     "اسفند"
 ];
 
-
-
-/* =========================================================
-   2. ساخت جدول 12 ماه
-========================================================= */
-
 const table =
     document.getElementById(
         "kpiTable"
@@ -129,18 +123,17 @@ months.forEach((month, index) => {
         </td>
 
 
-        <!-- مبلغ سفارش -->
-
+      
+        <!-- مبلغ سفارش خرید -->
         <td>
-
             <input
-                type="number"
-                min="0"
+                type="text"
+                inputmode="numeric"
                 class="input-number amount"
                 data-month="${index}"
                 value="0"
+                autocomplete="off"
             >
-
         </td>
 
 
@@ -241,9 +234,7 @@ function getMonthData(index) {
 
 
     const amount =
-        Number(
-            amountInput.value
-        ) || 0;
+    parseAmount(amountInput.value);
 
 
 
@@ -1345,30 +1336,40 @@ function updateCharts(scores) {
    10. وقتی Input تغییر کرد
 ========================================================= */
 
+/* =========================================================
+   INPUT CHANGE EVENT
+   فرمت مبلغ سفارش + محاسبه مجدد KPI
+========================================================= */
+
 document.addEventListener(
-
     "input",
-
     function (event) {
 
+        const input = event.target;
 
+
+        // اگر Input مربوط به مبلغ سفارش خرید بود
         if (
-
-            event.target
-                .classList
-                .contains(
-                    "input-number"
-                )
-
+            input.classList.contains("amount")
         ) {
 
+            input.value = formatAmount(
+                input.value
+            );
+
+        }
+
+
+        // بروزرسانی داشبورد برای تمام Inputها
+        if (
+            input.classList.contains("input-number")
+        ) {
 
             updateDashboard();
 
         }
 
     }
-
 );
 
 
@@ -1592,11 +1593,11 @@ async function deleteRecord(id) {
         CANCELLED: 2,
         PO: 4,
         PO-PRICE: 500000,
-        NAME: " عالیه کرمانشاهیان"
+        NAME: "امیر باقری"
     }
 
 
-    بنابراین برای عالیه کرمانشیان :
+    بنابراین برای امیر باقری:
 
     فروردین
     اردیبهشت
@@ -1636,7 +1637,7 @@ async function saveData(
 
 
         /*
-            فقط رکوردهای عالسه کرمانشیان 
+            فقط رکوردهای امیر باقری
         */
 
         const amirRecords =
@@ -1895,7 +1896,7 @@ async function saveData(
 
             alert(
 
-                "اطلاعات ۱۲ ماه عالیه کرمانشیان  با موفقیت ذخیره شد."
+                "اطلاعات ۱۲ ماه امیر باقری با موفقیت ذخیره شد."
 
             );
 
@@ -1946,7 +1947,7 @@ async function loadData() {
 
 
         /*
-            فقط کرمانشاهیان
+            فقط امیر باقری
         */
 
         const amirRecords =
@@ -2181,7 +2182,7 @@ async function resetData() {
     const confirmReset =
         confirm(
 
-            "آیا مطمئن هستید که تمام اطلاعات عالیه کرمانشاهیان صفر شود؟"
+            "آیا مطمئن هستید که تمام اطلاعات امیر باقری صفر شود؟"
 
         );
 
@@ -2246,7 +2247,7 @@ async function resetData() {
 
     alert(
 
-        "اطلاعات عالیه کرمانشاهیان صفر شد."
+        "اطلاعات امیر باقری صفر شد."
 
     );
 
@@ -2300,3 +2301,50 @@ async function init() {
 
 
 init();
+
+/* =========================================================
+   FORMAT PURCHASE ORDER AMOUNT
+   جدا کردن سه‌رقم‌سه‌رقم مبلغ سفارش خرید
+========================================================= */
+
+
+// تبدیل اعداد فارسی و عربی به انگلیسی
+function normalizeAmountDigits(value) {
+
+    return String(value)
+
+        .replace(/[۰-۹]/g, digit =>
+            "۰۱۲۳۴۵۶۷۸۹".indexOf(digit)
+        )
+
+        .replace(/[٠-٩]/g, digit =>
+            "٠١٢٣٤٥٦٧٨٩".indexOf(digit)
+        );
+
+}
+
+
+// نمایش مبلغ با جداکننده هزارگان
+function formatAmount(value) {
+
+    const digits = normalizeAmountDigits(value)
+        .replace(/\D/g, "");
+
+
+    return digits.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        ","
+    );
+
+}
+
+
+// تبدیل مبلغ فرمت‌شده به عدد واقعی
+function parseAmount(value) {
+
+    const digits = normalizeAmountDigits(value)
+        .replace(/\D/g, "");
+
+    return Number(digits) || 0;
+
+}

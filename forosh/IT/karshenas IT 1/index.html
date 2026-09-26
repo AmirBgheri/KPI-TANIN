@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>کارتابل فروش کامپیوتر | Tanin Mes</title>
+  <link rel="stylesheet" href="../../../output.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+  <header class="h-19 bg-[#0B3557] text-white flex items-center justify-between px-6 lg:px-8 shadow-md">
+    <div class="flex items-center gap-4">
+      <img src="../../../icons/logo_white-removebg-preview.png" class="w-12 h-12 object-contain" alt="Tanin Mes">
+      <div>
+        <h1 class="font-bold text-lg">Tanin Mes Sepidan</h1>
+        <p class="text-sm text-blue-300">Sales KPI System</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <span id="headerDate" class="hidden md:block text-sm text-white/80"></span>
+      <div class="text-left">
+        <p id="headerExpertName" class="font-bold">کارشناس اول کامپیوتر</p>
+        <p class="text-xs text-white/65">کارشناس فروش - تیم کامپیوتر</p>
+      </div>
+      <a href="../../sale.index.html" id="logoutBtn" type="button"
+        class="px-4 py-2 rounded-xl border border-white/20 hover:bg-white/10 transition">خروج</a>
+    </div>
+  </header>
+
+  <main class="max-w-375 mx-auto px-4 lg:px-6 py-6">
+
+    <section
+      class="bg-white border border-slate-200 rounded-2xl shadow-sm px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <p class="text-blue-600 font-semibold text-sm">تیم فروش کامپیوتر</p>
+        <h2 class="mt-1 text-3xl font-bold text-[#0B3557]">کارتابل کارشناس فروش</h2>
+        <p class="mt-2 text-slate-500">ثبت و بررسی عملکرد فروش به تفکیک ماه</p>
+      </div>
+      <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M480-80q-83 0-141.5-58.5T280-280q0-58 35-122t165-238q130 174 165 238t35 122q0 83-58.5 141.5T480-80Z" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="mt-4 bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+        <div>
+          <p id="welcomeText" class="text-lg font-bold text-[#0B3557]">سلام کارشناس اول کامپیوتر</p>
+          <p class="mt-1 text-sm text-slate-500">عملکرد ماه انتخاب‌شده را در این صفحه مشاهده و ثبت کنید.</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="nextMonthBtn" type="button"
+            class="w-11 h-11 rounded-xl border border-slate-200 bg-white hover:bg-blue-50 hover:border-blue-200 transition">‹</button>
+          <div class="min-w-[190px] text-center px-5 py-3 rounded-xl bg-blue-50 border border-blue-100">
+            <span id="selectedMonthLabel" class="font-bold text-blue-700">فروردین ۱۴۰۵</span>
+          </div>
+          <button id="prevMonthBtn" type="button"
+            class="w-11 h-11 rounded-xl border border-slate-200 bg-white hover:bg-blue-50 hover:border-blue-200 transition">›</button>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-slate-500">میزان تحقق تارگت ماه</span>
+          <span id="targetPercentText" class="font-bold text-blue-600">۰٪</span>
+        </div>
+        <div class="mt-2 h-3 rounded-full bg-slate-100 overflow-hidden">
+          <div id="targetProgress" class="h-full rounded-full bg-blue-500 transition-all duration-500"
+            style="width:0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between"><span class="font-semibold text-slate-600">مبلغ فروش</span>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">💰
+          </div>
+        </div>
+        <p id="salesAmountValue" class="mt-5 text-2xl font-bold text-[#0B3557]">۰</p>
+        <p class="mt-1 text-xs text-slate-400">ریال</p>
+      </article>
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between"><span class="font-semibold text-slate-600">تعداد سفارش</span>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">🛒
+          </div>
+        </div>
+        <p id="orderCountValue" class="mt-5 text-2xl font-bold text-[#0B3557]">۰</p>
+        <p class="mt-1 text-xs text-slate-400">عدد</p>
+      </article>
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between"><span class="font-semibold text-slate-600">کالا</span>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">📦
+          </div>
+        </div>
+        <p id="productCountValue" class="mt-5 text-2xl font-bold text-[#0B3557]">۰</p>
+        <p class="mt-1 text-xs text-slate-400">نوع</p>
+      </article>
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between"><span class="font-semibold text-slate-600">حاشیه سود</span>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">%
+          </div>
+        </div>
+        <p id="profitMarginValue" class="mt-5 text-2xl font-bold text-[#0B3557]">۰٪</p>
+        <p class="mt-1 text-xs text-slate-400">میانگین وزنی</p>
+      </article>
+      <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
+        <div class="flex items-center justify-between"><span class="font-semibold text-slate-600">تارگت ماه</span>
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">🎯
+          </div>
+        </div>
+        <p id="targetValue" class="mt-5 text-2xl font-bold text-[#0B3557]">۰</p>
+        <p class="mt-1 text-xs text-slate-400">ریال</p>
+      </article>
+    </section>
+
+    <section class="mt-4 grid grid-cols-1 xl:grid-cols-12 gap-4">
+      <article class="xl:col-span-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <h3 class="font-bold text-lg text-[#0B3557]">ثبت فعالیت جدید</h3><span class="text-blue-600">✎</span>
+        </div>
+
+        <form id="activityForm" class="p-6">
+          <input id="editingActivityId" type="hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="block mb-2 text-sm font-semibold">تاریخ</label><input id="activityDate" type="text"
+                placeholder="1405/01/16"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div><label class="block mb-2 text-sm font-semibold">نوع فعالیت</label><select id="activityType"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+                <option value="فروش">فروش</option>
+                <option value="پیگیری مشتری">پیگیری مشتری</option>
+                <option value="جلسه">جلسه</option>
+                <option value="سایر">سایر</option>
+              </select></div>
+            <div><label class="block mb-2 text-sm font-semibold">مشتری</label><input id="customerInput" type="text"
+                placeholder="نام مشتری"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div><label class="block mb-2 text-sm font-semibold">کالا</label><input id="productInput" type="text"
+                placeholder="نام / نوع کالا"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div><label class="block mb-2 text-sm font-semibold">مبلغ فروش (ریال)</label><input id="salesAmountInput"type="text" inputmode="numeric" min="0" placeholder="مبلغ فروش"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div><label class="block mb-2 text-sm font-semibold">تعداد سفارش</label><input id="orderCountInput"
+                type="number" min="0" placeholder="تعداد سفارش"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div class="md:col-span-2"><label class="block mb-2 text-sm font-semibold">حاشیه سود (%)</label><input
+                id="profitMarginInput" type="number" min="0" step="0.1" placeholder="مثلاً 12.5"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            </div>
+            <div class="md:col-span-2"><label class="block mb-2 text-sm font-semibold">توضیحات
+                (اختیاری)</label><textarea id="descriptionInput" rows="3" placeholder="توضیحات خود را وارد کنید..."
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none resize-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"></textarea>
+            </div>
+          </div>
+
+          <div class="mt-5 flex gap-3">
+            <button id="saveActivityBtn" type="submit"
+              class="flex-1 px-5 py-3 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition">+
+              ثبت اطلاعات</button>
+            <button id="clearFormBtn" type="button"
+              class="px-5 py-3 rounded-xl bg-slate-100 text-slate-600 font-semibold hover:bg-slate-200 transition">پاک
+              کردن</button>
+          </div>
+          <p id="formMessage" class="hidden mt-4 text-sm"></p>
+        </form>
+      </article>
+
+      <div class="xl:col-span-7 space-y-4">
+        <article class="bg-white border border-slate-200 rounded-2xl shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100">
+            <h3 class="font-bold text-lg text-[#0B3557]">روند فروش ماهانه</h3>
+            <p class="mt-1 text-xs text-slate-400">مبلغ فروش و تعداد سفارش در طول سال</p>
+          </div>
+          <div class="p-5 h-[330px]"><canvas id="monthlyTrendChart"></canvas></div>
+        </article>
+
+        <article class="bg-white border border-slate-200 rounded-2xl shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-lg text-[#0B3557]">میزان فروش بر اساس کالا</h3>
+              <p id="productChartMonth" class="mt-1 text-xs text-slate-400">فروردین ۱۴۰۵</p>
+            </div><span class="text-blue-600">◉</span>
+          </div>
+          <div class="p-5 h-[290px]"><canvas id="productSalesChart"></canvas></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mt-4 mb-8 bg-white border border-slate-200 rounded-2xl shadow-sm">
+      <div
+        class="px-6 py-4 border-b border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div>
+          <h3 class="font-bold text-lg text-[#0B3557]">فعالیت‌های ثبت‌شده</h3>
+          <p id="activitiesMonthLabel" class="mt-1 text-xs text-slate-400">فروردین ۱۴۰۵</p>
+        </div>
+        <button id="showActivitiesBtn" type="button"
+          class="px-5 py-2.5 rounded-xl bg-blue-50 text-blue-700 border border-blue-100 font-semibold hover:bg-blue-100 transition">مشاهده
+          فعالیت‌ها</button>
+      </div>
+
+      <div id="activitiesWrapper" class="hidden overflow-x-auto">
+        <table class="w-full min-w-[1050px] text-sm">
+          <thead class="bg-slate-50 text-slate-500">
+            <tr>
+              <th class="px-4 py-3 text-right">تاریخ</th>
+              <th class="px-4 py-3 text-right">نوع فعالیت</th>
+              <th class="px-4 py-3 text-right">مشتری</th>
+              <th class="px-4 py-3 text-right">کالا</th>
+              <th class="px-4 py-3 text-right">تعداد سفارش</th>
+              <th class="px-4 py-3 text-right">مبلغ فروش</th>
+              <th class="px-4 py-3 text-right">حاشیه سود</th>
+              <th class="px-4 py-3 text-right">توضیحات</th>
+              <th class="px-4 py-3 text-right">عملیات</th>
+            </tr>
+          </thead>
+          <tbody id="activitiesTableBody" class="divide-y divide-slate-100"></tbody>
+        </table>
+        <div id="emptyActivities" class="hidden p-8 text-center text-slate-400">برای این ماه فعالیتی ثبت نشده است.</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="loadingOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-white/70 backdrop-blur-sm">
+    <div class="bg-white border border-slate-200 shadow-xl rounded-2xl px-7 py-5 flex items-center gap-3">
+      <div class="w-5 h-5 rounded-full border-2 border-blue-500 border-t-transparent animate-spin"></div>
+      <span class="font-semibold text-slate-600">در حال دریافت اطلاعات...</span>
+    </div>
+  </div>
+
+  <script src="master.js"></script>
+</body>
+
+</html>
