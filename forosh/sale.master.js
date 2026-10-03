@@ -45,7 +45,7 @@ const salesSections = {
                 name: "کارشناس روغن ۱",
                 role: "کارشناس فروش روغن",
                 initials: "O1",
-                password: "OIL 1",
+                password: "09140953698",
                 page: "OIL/karshenas OIL 1/index.html"
             },
             {
@@ -72,7 +72,7 @@ const salesSections = {
                 name: "کارشناس کامپیوتر ۱",
                 role: "کارشناس فروش کامپیوتر",
                 initials: "IT1",
-                password: "IT 1",
+                password: "09140953698",
                 page: "IT/karshenas IT 1/index.html"
             },
             {
@@ -97,7 +97,7 @@ const salesSections = {
                 name: "کارشناس استعلام ۱",
                 role: "کارشناس استعلام فروش",
                 initials: "E1",
-                password: "ESTELAM 1",
+                password: "09140953698",
                 page: "ESTELAMAT/KARSHENAS ESTELAMAT 1/index.html"
             },
             {
